@@ -1,8 +1,8 @@
-package operations;
+package spreadSheet.operations;
 
 import spreadSheet.Operator;
 
-public class Add extends Operator {
+public class Subtract extends Operator {
 
 	@Override
 	public Object calculate() {
