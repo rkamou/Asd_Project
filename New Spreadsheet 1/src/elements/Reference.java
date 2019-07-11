@@ -8,43 +8,19 @@ public class Reference extends Contents{
 		this.cell = cell;
 	}
 
-	public Cell getCell() {
-		return cell;
-	}
-
-	public void setCell(Cell cell) {
-		if(!cell.isEmpty()) {
-			this.cell = cell;
-		}
-		
-	}
-
-
 	@Override
 	public String value() {		
-		
-		String val=new String();
-
-			val = this.getCell().value();
-
-		return val;
+		return cell.value();
 	}
 
 	@Override
 	public String formula() {
-		return null;
+		return cell.getCoordinates();
 	}
 
 	@Override
 	public float data() {
-		float ret = 0;
-
-		Contents contents = this.cell.getContent();
-
-		if (contents != null)
-			ret = contents.data();
-
-		return ret;
+		return cell.data();
 	}
 	
 	

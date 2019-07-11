@@ -1,37 +1,25 @@
 package elements;
 
 public class Numeric extends Contents{
-	private Double number;
+	private float number;
 
-	public Numeric(Double number) {
+	public Numeric(float number) {
 		this.number = number;
 	}
 
-	public Boolean isNumber() { return true; }
 
 	@Override
 	public String value() {
-		return String.valueOf(number);
+		return number+"";
 	}
-	public Numeric append(Double nbr)
-	{
-		if (nbr != null)
-			number+=nbr;
-		return this;
-	}
-
 	@Override
 	public String formula() {
-		StringBuilder ret = new StringBuilder();
-
-		ret.append('\"').append(number.toString()).append('\"');
-
-		return ret.toString();
+		return value();
 	}
 
 	@Override
 	public float data() {
-		return 0;
+		return number;
 	}
 	
 
