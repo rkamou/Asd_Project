@@ -112,7 +112,7 @@ public class Cell extends Element
 
 		if (contents != null)
 			forml = contents.formula();
-		else
+		else 
 			forml = ": null";
 
 		return forml;

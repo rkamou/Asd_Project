@@ -13,10 +13,20 @@ public class Numeric extends Contents{
 	public String value() {
 		return String.valueOf(number);
 	}
+	public Numeric append(Double nbr)
+	{
+		if (nbr != null)
+			number+=nbr;
+		return this;
+	}
 
 	@Override
 	public String formula() {
-		return null;
+		StringBuilder ret = new StringBuilder();
+
+		ret.append('\"').append(number.toString()).append('\"');
+
+		return ret.toString();
 	}
 
 	@Override

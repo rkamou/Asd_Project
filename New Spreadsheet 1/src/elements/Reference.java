@@ -13,25 +13,38 @@ public class Reference extends Contents{
 	}
 
 	public void setCell(Cell cell) {
-		this.cell = cell;
+		if(!cell.isEmpty()) {
+			this.cell = cell;
+		}
+		
 	}
 
+
 	@Override
-	public String value() {
+	public String value() {		
 		
-		return String.valueOf(cell.data());
+		String val=new String();
+
+			val = this.getCell().value();
+
+		return val;
 	}
 
 	@Override
 	public String formula() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public float data() {
-		// TODO Auto-generated method stub
-		return 0;
+		float ret = 0;
+
+		Contents contents = this.cell.getContent();
+
+		if (contents != null)
+			ret = contents.data();
+
+		return ret;
 	}
 	
 	
