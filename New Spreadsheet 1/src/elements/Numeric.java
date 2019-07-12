@@ -12,7 +12,7 @@ public class Numeric extends Contents {
 	public Numeric(float number) {
 		this.number = number;
 	}
-
+   
 	@Override
 	public String value() {
 		if (this.formula() != "" && isNumericFormulas(this.formula().trim()))
