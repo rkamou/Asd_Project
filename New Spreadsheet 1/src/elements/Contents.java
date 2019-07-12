@@ -32,4 +32,7 @@ public abstract class Contents extends Element
 		return coordinates;
 		
 	}
+	public Cell getCellOwner() {
+		return Associations.cellIsMadeOfContents.rightToLeft(this);
+	}
 }

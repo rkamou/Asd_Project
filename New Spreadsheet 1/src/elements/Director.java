@@ -20,7 +20,7 @@ public class Director
 		
 			spreadsheet.cell(r, c).setContent(new Numeric(number));
 	}
-	
+
 	public Cell cell(int row, int col) 							// Get a reference to cell at (row,col)
 	{ 
 		return spreadsheet.cell(row, col); 
@@ -80,6 +80,8 @@ public class Director
 		writeInCellNumber(11, 2, 12);
 
 		writeInCellText(12, 1, "Installments:");
+		writeInCellNumber(12, 2, 0);
+		spreadsheet.cell(12, 2).setFormula("5+6+1-3+5");  
 
 	}
 
