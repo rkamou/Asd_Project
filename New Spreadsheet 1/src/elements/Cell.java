@@ -1,11 +1,20 @@
 package elements;
 
+import java.util.regex.Pattern;
+
 public class Cell extends Element 
 {
 	private int row;
 	private int column;	
-	private String formulaString = new String();								// The formula, if any, as "typed in" by the end user
+	private String formulaString = "";								// The formula, if any, as "typed in" by the end user
 
+	/**
+	 * isNumericFormulas checks if the formulas is correct arithmetical expression
+	 * @param formulas
+	 * @return
+	 */
+	
+	
 	public Cell()
 	{
 		row = 0; 
@@ -48,8 +57,10 @@ public class Cell extends Element
 
 	public void setContent(Contents cont)
 	{
-		if (cont != null)
+		if (cont != null) {
 			Associations.cellIsMadeOfContents.link(this,  cont);
+			
+		}
 	}
 	
 	public Contents getContent()
@@ -106,24 +117,15 @@ public class Cell extends Element
 	
 	public String formula()									// The mathematical description of a cell's contents
 	{
-		String forml;
 
-		Contents contents = getContent();
+		return formulaString;
 
-		if (contents != null)
-			forml = contents.formula();
-		else 
-			forml = ": null";
-
-		return forml;
-		
 	}
 	
 	public String examine()									// Provide a textual description of what's in this cell
 	{
-		StringBuilder examination = new StringBuilder();
-
-		examination.append(getCoordinates()).append(" = ").append(formula()).append("\n");
+		StringBuilder examination = new StringBuilder(); 
+		examination.append(getCoordinates()).append(" = ").append(getContent().formula()).append("\n");
 
 		return examination.toString();
 	

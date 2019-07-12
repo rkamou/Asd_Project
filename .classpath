@@ -2,5 +2,6 @@
 <classpath>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="src" path="New Spreadsheet 1/src"/>
+	<classpathentry kind="lib" path="/Users/pogoromuald/eclipse-workspace/Asd_Project/New Spreadsheet 1/src/exp4j-0.4.8.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
