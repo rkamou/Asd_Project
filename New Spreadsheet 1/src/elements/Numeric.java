@@ -16,12 +16,16 @@ public class Numeric extends Contents {
 	@Override
 	public String value() {
 		if (this.formula() != "" && isNumericFormulas(this.formula().trim()))
-			number = this.computeFormulas(this.formula()).floatValue(); 
+			number = this.computeFormulas(this.formula().trim()).floatValue(); 
 		return number + "";
 	}
-	 
+	 /**
+	  * 
+	  * @param formulas = 2-3+5*7
+	  * @return
+	  */
 	public boolean isNumericFormulas(String formulas) {
-		Pattern p = Pattern.compile("\\d+[\\+\\-\\/\\*]\\d+([\\+\\-\\/\\*]\\d+)*");
+		Pattern p = Pattern.compile("\\d+(\\.\\d)?+[\\+\\-\\/\\*]\\d+(\\.\\d+)?([\\+\\-\\/\\*]\\d+(\\.\\d+)?)*");
 		return p.matcher(formulas).matches();   
 	}
 

@@ -81,7 +81,7 @@ public class Director
 
 		writeInCellText(12, 1, "Installments:");
 		writeInCellNumber(12, 2, 0);
-		spreadsheet.cell(12, 2).setFormula("5+6+1-3+5");  
+		spreadsheet.cell(12, 2).setFormula("5.1+6.1+1-3+5");  
 
 	}
 
