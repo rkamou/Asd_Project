@@ -19,7 +19,7 @@ public class Numeric extends Contents {
 			number = this.computeFormulas(this.formula()).floatValue(); 
 		return number + "";
 	}
-	
+	 
 	public boolean isNumericFormulas(String formulas) {
 		Pattern p = Pattern.compile("\\d+[\\+\\-\\/\\*]\\d+([\\+\\-\\/\\*]\\d+)*");
 		return p.matcher(formulas).matches();   
