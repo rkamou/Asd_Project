@@ -73,7 +73,7 @@ public class Director
 
 		writeInCellText(9, 1, "Total:");
 
-		writeInCellText(10, 1, "Partners: ");
+		writeInCellText(10, 1, "Partners: ");   
 		writeInCellNumber(10, 2, 4);
 
 		writeInCellText(11, 1, "Months: ");
