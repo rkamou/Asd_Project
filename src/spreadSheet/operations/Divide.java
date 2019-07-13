@@ -13,7 +13,7 @@ public class Divide extends NumOperator {
 	public String value() {
 		List<Reference> list = super.listRefences();
 		if (list != null)
-			return String.valueOf(list.stream().map(e -> Double.parseDouble(e.value())).reduce(0.0, (a, b) -> a / b));
+			return String.valueOf(list.stream().map(e -> Double.parseDouble(e.value())).reduce((a, b) -> a / b).orElse(null));
 		return "";
 	}
 	

@@ -11,7 +11,7 @@ public class Multiply extends NumOperator {
 	public String value() {
 		List<Reference> list = super.listRefences();
 		if (list != null)
-			return String.valueOf(list.stream().map(e -> Double.parseDouble(e.value())).reduce(0.0, (a, b) -> a * b));
+			return String.valueOf(list.stream().map(e -> Double.parseDouble(e.value())).reduce(1.0, (a, b) -> a * b));
 		return "";
 	}
 

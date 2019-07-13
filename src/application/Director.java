@@ -87,11 +87,14 @@ public class Director
 		writeInCellNumber(8, 2, 0.15F);// Tax factor label
 
 		writeInCellText(9, 1, "Total:");
-		Reference ref=new Reference(cell(8, 2));
-		cell(9,2).setContent(ref);
+//		writeInCellNumber(9, 2, (float)(Double.valueOf(cell(7, 2).value())*Double.valueOf(cell(8, 2).value())));
+//		Reference ref=new Reference(cell(8, 2));
+//		cell(9,2).setContent(ref);
 		writeInCellText(10, 4, "This is just a refernce to [1,2], to test the \"Reference\" class and mechanism");
 
-//		writeInCellText(10, 1, "Partners: ");   
+		writeInCellText(10, 1, "Partners: ");
+		Reference ref=new Reference(cell(9, 2));
+		cell(10,2).setContent(ref);
 //		writeInCellNumber(10, 2, 4);
 //
 //		writeInCellText(11, 1, "Months: ");
@@ -101,10 +104,10 @@ public class Director
 //		//writeInCellNumber(12, 2, 0);
 //		 
 		Multiply mult = new Multiply();
-		mult.appends(new Reference(cell(9, 2)));
-		mult.appends(new Reference(cell(10, 2)));
+		mult.appends(new Reference(cell(7, 2)));
+		mult.appends(new Reference(cell(8, 2)));
 		writeInCellText(13, 1, "Total * Partners:");
-		//cell(13, 2).setContent(mult);
+		cell(13, 2).setContent(mult);
 		//spreadsheet.cell(12, 2).setFormula("5.1+6.1+1-3+5");  
 
 	}
