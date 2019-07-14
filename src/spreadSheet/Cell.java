@@ -53,6 +53,8 @@ public class Cell extends Element
 		
 		return coord;
 	}
+	
+	
 
 	public int getRow() { return row; }
 	public int getColumn() { return column; }

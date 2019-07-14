@@ -2,7 +2,7 @@ package spreadSheet;
 
 public class Spreadsheet
 {
-	private static final int size = 15;				// The spreadsheet is a size x size square of cells
+	private static final int size = 20;				// The spreadsheet is a size x size square of cells
 	private static Cell nullCell = new Cell();		// A fake cell we return when coordinates are out-of-bound
 
 	private Cell[][] cells = new Cell[size][size];	// The fixed array of cells, each dimension from 1 to size, including size

@@ -6,7 +6,7 @@ import spreadSheet.Contents;
 public class Reference extends Contents{
 
 	private Cell cell;
-
+	
 	public Reference(Cell cell) {
 		this.cell = cell;
 	}

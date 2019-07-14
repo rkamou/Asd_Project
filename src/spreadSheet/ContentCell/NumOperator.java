@@ -8,12 +8,12 @@ import spreadSheet.util.Associations;
 
 public abstract class NumOperator extends Contents{
 	// cellIsReferenceOf is used for association OneToMany with Refences
-	public void appends(Reference reference) {
-		if(reference != null) Associations.cellIsReferenceOf.link(this, reference);
+	public void appends(Contents contents) {
+		if(contents != null) Associations.cellsOperateOn.link(this, contents);
 	}
 	
-	public List<Reference> listRefences(){
-		return Associations.cellIsReferenceOf.leftToRights(this);
+	public List<Contents> listRefences(){
+		return Associations.cellsOperateOn.leftToRights(this);
 	}
 	
 	 
