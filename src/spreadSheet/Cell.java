@@ -1,7 +1,6 @@
 package spreadSheet;
 
-import java.util.regex.Pattern;
-
+ 
 import spreadSheet.util.Associations;
 
 public class Cell extends Element 
@@ -10,12 +9,7 @@ public class Cell extends Element
 	private int column;	
 	private String formulaString = "";								// The formula, if any, as "typed in" by the end user
 
-	/**
-	 * isNumericFormulas checks if the formulas is correct arithmetical expression
-	 * @param formulas
-	 * @return
-	 */
-	
+	 
 	
 	public Cell()
 	{

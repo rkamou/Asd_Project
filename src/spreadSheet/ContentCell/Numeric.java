@@ -1,10 +1,10 @@
 package spreadSheet.ContentCell;
 
-import java.util.regex.Pattern;
+//import java.util.regex.Pattern;
  
 
-import net.objecthunter.exp4j.Expression;
-import net.objecthunter.exp4j.ExpressionBuilder;
+//import net.objecthunter.exp4j.Expression;
+//import net.objecthunter.exp4j.ExpressionBuilder;
 import spreadSheet.Contents;
 
 public class Numeric extends Contents {
