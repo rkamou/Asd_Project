@@ -79,7 +79,7 @@ public class NumericExpParserEngine implements CellParserEngine {
 						j++;
 					d.appends(tcontents[j]);
 					tcontents[i] = d;
-					listIndexUsed.add(j);
+					listIndexUsed.add(j);   
 					i++;
 				}
 			}
