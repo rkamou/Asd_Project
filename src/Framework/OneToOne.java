@@ -36,7 +36,7 @@ public class OneToOne<Left, Right> extends Association<Left, Right>
 	}
 	
 	@Override
-	public void link(Left left, Right right)							// Link "left" with "right", making sure the previous links they  
+	public void link(Left left, Right right)							// DoubleLinkedList "left" with "right", making sure the previous links they  
 																		// ...previously had (if any) are erased since this is a ONE to ONE Association
 	{
 		if (left != null && right != null && leftCollection != null && rightCollection != null)
@@ -49,7 +49,7 @@ public class OneToOne<Left, Right> extends Association<Left, Right>
 			if (previousLeft != null)									// If it is...
 				leftCollection.unlink(previousLeft, right);				// ...tell that one it's no longer linked to "right"
 			
-			super.link(left, right);									// Link left to right and right to left, according to the traversal policies
+			super.link(left, right);									// DoubleLinkedList left to right and right to left, according to the traversal policies
 		}
 	}
 

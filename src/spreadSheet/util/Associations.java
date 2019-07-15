@@ -9,7 +9,7 @@ import spreadSheet.ContentCell.Reference;
 public class Associations
 {
 	static public OneToOne<Cell, Contents> cellIsMadeOfContents = new OneToOne<Cell, Contents>("Contains", "Belongs To", "Owner", "Contents");
-	static public OneToMany<NumOperator, Reference> cellIsReferenceOf = new OneToMany<NumOperator, Reference>("Operation", "operates", "Content", "Renference");
+	static public OneToMany<NumOperator, Contents> cellsOperateOn = new OneToMany<NumOperator, Contents>("Operation", "operates", "Content", "Renference");
 	
 	static public String report()
 	{

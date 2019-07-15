@@ -33,7 +33,7 @@ public class OneToMany<Left, Right> extends Association<Left, Right>
 	}
 
 	@Override
-	public void link(Left left, Right right)								// Link "left" with "right", making sure "right" will be linked to NO MORE than one Left object
+	public void link(Left left, Right right)								// DoubleLinkedList "left" with "right", making sure "right" will be linked to NO MORE than one Left object
 	{																			
 		if (left != null && right != null )									// Skip all NULL pointers, shockingly
 		{
