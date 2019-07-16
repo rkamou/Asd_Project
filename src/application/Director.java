@@ -6,8 +6,7 @@ import spreadSheet.ContentCell.Numeric;
 import spreadSheet.ContentCell.Reference;
 import spreadSheet.ContentCell.Text;
 import spreadSheet.factory.concrete.contents.FContents;
-import spreadSheet.operations.Add;
-import spreadSheet.operations.Multiply;
+import spreadSheet.operations.Add; 
 
 public class Director
 {
@@ -121,8 +120,8 @@ public class Director
 //		Multiply mult = new Multiply();
 //		mult.appends(new Reference(cell(7, 2)));
 //		mult.appends(new Reference(cell(8, 2)));
-//		writeInCellText(13, 1, "Total * Partners:");
-//		spreadsheet.cell(13, 2).setContent(cellFactory.CreateContent("[1,2]+6.1+2*2-5+[2,2]"));
+		writeInCellText(18, 1, "Total * Partners:");
+		spreadsheet.cell(18, 2).setContent(cellFactory.CreateContent("[1,2]+6.1+2*2-5+[2,2]"));
 
 		//cell(13, 2).setContent(mult);
 		//spreadsheet.cell(11, 2).setContent(new Complex());  
