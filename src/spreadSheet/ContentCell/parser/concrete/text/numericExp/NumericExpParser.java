@@ -1,4 +1,4 @@
-package spreadSheet.ContentCell.parser.concrete;
+package spreadSheet.ContentCell.parser.concrete.text.numericExp;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +17,7 @@ import spreadSheet.operations.Divide;
 import spreadSheet.operations.Multiply;
 import spreadSheet.operations.Substract;
 
-public class NumericExpParserEngine implements CellParserEngine {
+public class NumericExpParser implements CellParserEngine {
 	private List<Contents> listContents = new ArrayList<Contents>();
 
 	@Override
@@ -35,7 +35,7 @@ public class NumericExpParserEngine implements CellParserEngine {
 		return null;
 	}
 
-	boolean isDouble(String str) {
+	public static boolean isDouble(String str) {
 		try {
 			Double.parseDouble(str);
 			return true;
@@ -54,8 +54,16 @@ public class NumericExpParserEngine implements CellParserEngine {
 	// return e.evaluate();
 	// }
 
-	public Contents sortList(Contents[] tcontents) {
+	public static Contents[] tContents(List<Contents> list2) {
+		Contents[] t = new Contents[list2.size()];
+		for (int i = 0; i < list2.size(); i++)
+			t[i] = list2.get(i);
+		return t;
+	}
+	
+	public static Contents sortList(Contents[] tcontents) {
 		List<Integer> listIndexUsed = new ArrayList<>();
+		//for(Contents c : tcontents) System.out.println(c.getClass().getSimpleName());
 		int i = 0;
 		int j;
 		i = 0;
@@ -112,35 +120,7 @@ public class NumericExpParserEngine implements CellParserEngine {
 			}
 			i++;
 		}
-		i = 0;
-		while (i < tcontents.length) {
-			if (tcontents[i] != null) {
-				if (tcontents[i] instanceof Numeric)
-					;
-				// System.out.println("Item : " + tcontents[i].value());
-				if (tcontents[i] instanceof Add) {
-
-					j = i - 1;
-					while (j >= 0 && listIndexUsed.contains(j))
-						j--;
-					// System.out.println("Add Occurs index " + i + " Index " + j);
-					Add d = new Add();
-					d.appends(tcontents[j]);
-					listIndexUsed.add(j);
-					// tcontents[j] = null;
-					j = i + 1;
-					while (j < tcontents.length && listIndexUsed.contains(j))
-						j++;
-					// System.out.println("Add Occurs index " + i + " Index " + j);
-					d.appends(tcontents[j]);
-					tcontents[i] = d;
-					listIndexUsed.add(j);
-					// tcontents[i+1] = null;
-					i++;
-				}
-			}
-			i++;
-		}
+		
 		i = 0;
 		while (i < tcontents.length) {
 			if (tcontents[i] != null) {
@@ -170,6 +150,37 @@ public class NumericExpParserEngine implements CellParserEngine {
 			}
 			i++;
 		}
+		
+		i = 0;
+		while (i < tcontents.length) {
+			if (tcontents[i] != null) {
+				if (tcontents[i] instanceof Numeric)
+					;
+				// System.out.println("Item : " + tcontents[i].value());
+				if (tcontents[i] instanceof Add) {
+
+					j = i - 1;
+					while (j >= 0 && listIndexUsed.contains(j))
+						j--;
+					// System.out.println("Add Occurs index " + i + " Index " + j);
+					Add d = new Add();
+					d.appends(tcontents[j]);
+					listIndexUsed.add(j);
+					// tcontents[j] = null;
+					j = i + 1;
+					while (j < tcontents.length && listIndexUsed.contains(j))
+						j++;
+					// System.out.println("Add Occurs index " + i + " Index " + j);
+					d.appends(tcontents[j]);
+					tcontents[i] = d;
+					listIndexUsed.add(j);
+					// tcontents[i+1] = null;
+					i++;
+				}
+			}
+			i++;
+		}
+		
 		i = 0;
 		while (i < tcontents.length) {
 			if (!listIndexUsed.contains(i))
@@ -182,13 +193,14 @@ public class NumericExpParserEngine implements CellParserEngine {
 	public boolean isConstantInExpression(String expression) {
 		int i = 0;
 		String term = "";
-		while (i < expression.length()) {
+		boolean indexUsed = true;
+		while (i < expression.length()  && indexUsed) {
 			if ((expression.charAt(i) + "").matches("\\d") || (expression.charAt(i) + "").equals(".")) {
 				term += (expression.charAt(i) + "");
 				if (i == expression.length() - 1) {
 					listContents.add(new Numeric(Float.valueOf(term).floatValue()));
 				}
-			} else if (!(expression.charAt(i) + "").matches("[0-9]")) {
+			} else {
 				if (term.equals("")) {
 					//
 				} else {
@@ -196,22 +208,22 @@ public class NumericExpParserEngine implements CellParserEngine {
 				}
 				if ((expression.charAt(i) + "").equals("+")) {
 					listContents.add(new Add());
-				}
+				}else
 				if ((expression.charAt(i) + "").equals("-")) {
 					listContents.add(new Substract());
-				}
+				}else
 				if ((expression.charAt(i) + "").equals("*")) {
 					listContents.add(new Multiply());
-				}
+				}else
 				if ((expression.charAt(i) + "").equals("/")) {
 					listContents.add(new Divide());
-				}
+				}else   indexUsed = false;
 				term = "";
 			}
 			i++;
 		}
 
-		return true;
+		return true&&indexUsed;
 	}
 
 	public boolean isReferenceInExpression(String expression) {
@@ -278,7 +290,7 @@ public class NumericExpParserEngine implements CellParserEngine {
 			i++;
 		}
 
-		return true;
+		return true&&indexUsed;
 	}
 
 	public boolean isParenthesisExpression(String expression) {
@@ -349,10 +361,5 @@ public class NumericExpParserEngine implements CellParserEngine {
 		return true;
 	}
 
-	public Contents[] tContents(List<Contents> list2) {
-		Contents[] t = new Contents[list2.size()];
-		for (int i = 0; i < list2.size(); i++)
-			t[i] = list2.get(i);
-		return t;
-	}
+	
 }

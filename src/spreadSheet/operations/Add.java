@@ -16,9 +16,10 @@ public class Add extends NumOperator {
 
 	@Override
 	public String formula() {
+		if(!super.formula().equals("")) return super.formula();
 		List<Contents> list = listRefences();
 		if (list != null)
-			return list.stream().map(a -> a.formula()).reduce((a, b) -> a + "+" + b).orElse("");
+			return list.stream().map(a -> a.formula()).reduce((a, b) -> "("+ a + "+" + b +")").orElse("");
 		return "";
 	}
 }

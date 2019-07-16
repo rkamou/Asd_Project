@@ -1,4 +1,4 @@
-package spreadSheet.ContentCell.parser.concrete;
+package spreadSheet.ContentCell.parser.concrete.text;
 
 import spreadSheet.Contents;
 import spreadSheet.ContentCell.Text;

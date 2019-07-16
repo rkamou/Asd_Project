@@ -2,8 +2,9 @@ package spreadSheet.factory.concrete.contents;
 
 import spreadSheet.Contents;
 import spreadSheet.ContentCell.parser.abstracts.CellParserEngine;
-import spreadSheet.ContentCell.parser.concrete.NumericExpParserEngine;
-import spreadSheet.ContentCell.parser.concrete.StringParserEngine;
+import spreadSheet.ContentCell.parser.concrete.text.StringParserEngine;
+import spreadSheet.ContentCell.parser.concrete.text.numericExp.NumericComplexExpParser;
+import spreadSheet.ContentCell.parser.concrete.text.numericExp.NumericExpParser;
 import spreadSheet.factory.abstracts.contents.AFContents;
 
 public class FContents implements AFContents {
@@ -12,9 +13,14 @@ public class FContents implements AFContents {
 	public Contents CreateContent(String expression) {
 		String s = removeBlanck(expression);
 		Contents c;
-		CellParserEngine parser = new NumericExpParserEngine();
+		CellParserEngine parser = new NumericExpParser();
 		c = parser.parser(s);
 		if(c != null) return c;
+		
+		parser = new NumericComplexExpParser();
+		c = parser.parser(s);
+		if(c != null) return c;
+		
 		parser = new StringParserEngine();
 		return parser.parser(s);
 	}

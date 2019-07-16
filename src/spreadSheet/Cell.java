@@ -61,6 +61,14 @@ public class Cell extends Element
 		}
 	}
 	
+	public void setContent(String formulas, Contents cont)
+	{
+		if (cont != null) {
+			Associations.cellIsMadeOfContents.link(this,  cont);
+			this.formulaString = formulas;
+		}
+	}
+	
 	public Contents getContent()
 	{
 		return Associations.cellIsMadeOfContents.leftToRight(this);

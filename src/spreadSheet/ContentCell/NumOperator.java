@@ -17,7 +17,15 @@ public abstract class NumOperator extends Contents{
 	}
 	
 	 
-
+	@Override
+	public String formula() {
+		try {
+			System.out.println(super.getCellOwner().getFormulaString());
+			return super.getCellOwner().getFormulaString();
+		} catch (Exception e) {
+			return "";
+		} 
+	}
 	
 
 	@Override

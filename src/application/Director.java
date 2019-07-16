@@ -30,6 +30,18 @@ public class Director
 		
 			spreadsheet.cell(r, c).setContent(new Numeric(number));
 	}
+	
+//	public void setCell(int r, int c, String data) {
+//		if (data != null) {
+//			if (isDouble(data)) {
+//				float num = Float.parseFloat(data);
+//				spreadsheet.cell(r, c).setContent(new Numeric(num));
+//			} else {
+//				spreadsheet.cell(r, c).setContent(new Text(data));
+//			}
+//		}
+//
+//	}
 
 	public Cell cell(int row, int col) 							// Get a reference to cell at (row,col)
 	{ 
@@ -92,7 +104,11 @@ public class Director
 
 		writeInCellText(10, 1, "Total:");//(T = st(1-refTax) = st-st*refTax 
 		spreadsheet.cell(10, 2).setContent(cellFactory.CreateContent("[7,2]-[7,2]*[9,2]"));
-//		writeInCellNumber(9, 2, (float)(Double.valueOf(cell(7, 2).value())*Double.valueOf(cell(8, 2).value())));
+		spreadsheet.cell(10, 3).setContent("[7,2]*(1-[9,2])",cellFactory.CreateContent("([7,2]*(1-[9,2]))"));
+		
+		spreadsheet.cell(10, 4).setContent("1+(1-2)+5-1",cellFactory.CreateContent("1+(1-2)+5-1"));
+		
+		//		writeInCellNumber(9, 2, (float)(Double.valueOf(cell(7, 2).value())*Double.valueOf(cell(8, 2).value())));
 //		Reference ref=new Reference(cell(8, 2));
 //		cell(9,2).setContent(ref);
 //		writeInCellText(12, 4, "This is just a refernce to [1,2], to test the \"Reference\" class and mechanism");
@@ -105,7 +121,10 @@ public class Director
 		spreadsheet.cell(13, 2).setContent(cellFactory.CreateContent("12"));
 		
 		spreadsheet.cell(15, 1).setContent(cellFactory.CreateContent("Instalments: "));
-		spreadsheet.cell(15, 2).setContent(cellFactory.CreateContent("[10,2]/[12,2]/[13,2]"));
+		spreadsheet.cell(15, 2).setContent(cellFactory.CreateContent("[10,2]/[12,2]/[13,2]"));//1.0+1.0-2.0+5.0-1.0
+		//spreadsheet.cell(15, 3).setContent("1.0+1.0-2.0+5.0-1.0",cellFactory.CreateContent("1.0+1.0-2.0+5.0-1.0"));
+		//spreadsheet.cell(15, 3).setFormula("1.0+1.0-2.0+5.0-1.0");
+		
 		spreadsheet.cell(15, 4).setContent(cellFactory.CreateContent("Instalments Computation : SubTotal / Partners / Months"));
 //		Reference ref=new Reference(cell(9, 2));
 //		cell(12,2).setContent(ref);
